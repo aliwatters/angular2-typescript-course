@@ -1,16 +1,16 @@
 import {Component} from 'angular2/core';
-import {VoteComponent} from './vote.component';
+import {VoterComponent} from './voter.component';
 
 @Component({
     selector: 'my-app',
     template: `
-      <vote
+      <voter
         [voteCount]="vote.voteCount"
         [myVote]="vote.myVote"
         (change)="onVoteChange($event)"
-      ></vote>
+      ></voter>
     `,
-    directives: [VoteComponent]
+    directives: [VoterComponent]
 })
 
 export class AppComponent {

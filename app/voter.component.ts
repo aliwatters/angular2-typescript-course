@@ -1,25 +1,25 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 @Component({
-  selector: 'vote',
+  selector: 'voter',
   template:`
-    <div class='vote'>
-    <i class='glyphicon glyphicon-menu-up'
+    <div class='voter'>
+    <i class='glyphicon glyphicon-menu-up vote-button'
     [class.highlighted]='myVote == 1'
     (click)='upVote()'></i>
-    <span>{{ voteCount }}</span>
-    <i class='glyphicon glyphicon-menu-down'
+    <span>{{ voteCount + myVote }}</span>
+    <i class='glyphicon glyphicon-menu-down vote-button'
     [class.highlighted]='myVote == -1'
     (click)='downVote()'></i>
     </div>
   `,
   styles:[`
-    .vote { width:1em; text-align: center }
+    .voter { width:1em; text-align: center, color: #999; font-size:1.2em; }
     .highlighted { color: orange }
   `]
 })
 
-export class VoteComponent {
+export class VoterComponent {
   @Input() voteCount = 0;
   @Input() myVote = 0;
 
@@ -28,14 +28,12 @@ export class VoteComponent {
   upVote(){
     if (this.myVote > 0) return;
     this.myVote++;
-    this.voteCount++;
     this.change.emit({voteCount:this.voteCount, myVote:this.myVote});
   }
 
   downVote(){
     if (this.myVote < 0) return;
     this.myVote--;
-    this.voteCount--;
     this.change.emit({voteCount:this.voteCount, myVote:this.myVote});
   }
 

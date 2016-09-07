@@ -5,11 +5,11 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
   template:`
     <div class='voter'>
     <i class='glyphicon glyphicon-menu-up vote-button'
-    [class.highlighted]='myVote == 1'
+    [class.highlighted]='myVote > 0'
     (click)='upVote()'></i>
     <span>{{ voteCount + myVote }}</span>
     <i class='glyphicon glyphicon-menu-down vote-button'
-    [class.highlighted]='myVote == -1'
+    [class.highlighted]='myVote < 0'
     (click)='downVote()'></i>
     </div>
   `,

@@ -2,7 +2,7 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 @Component({
   selector: 'voter',
-  template:`
+  template: `
     <div class='voter'>
     <i class='glyphicon glyphicon-menu-up vote-button'
     [class.highlighted]='myVote > 0'
@@ -13,7 +13,7 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
     (click)='downVote()'></i>
     </div>
   `,
-  styles:[`
+  styles: [`
     .voter { width:1em; text-align: center, color: #999; font-size:1.2em; }
     .highlighted { color: orange }
   `]
@@ -25,16 +25,16 @@ export class VoterComponent {
 
   @Output() change = new EventEmitter();
 
-  upVote(){
+  upVote() {
     if (this.myVote > 0) return;
     this.myVote++;
-    this.change.emit({voteCount:this.voteCount, myVote:this.myVote});
+    this.change.emit({ voteCount: this.voteCount, myVote: this.myVote });
   }
 
-  downVote(){
+  downVote() {
     if (this.myVote < 0) return;
     this.myVote--;
-    this.change.emit({voteCount:this.voteCount, myVote:this.myVote});
+    this.change.emit({ voteCount: this.voteCount, myVote: this.myVote });
   }
 
 }

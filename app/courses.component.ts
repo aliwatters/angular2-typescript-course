@@ -13,14 +13,14 @@ import {AutoGrowDirective} from './auto-grow.directive';
       {{ course }}
       </li>
     </ul>
-    `,
-    providers: [CourseService],
-    directives: [AutoGrowDirective]
+  `,
+  providers: [CourseService],
+  directives: [AutoGrowDirective]
 })
 
 export class CoursesComponent {
   title = "The title of courses page";
-  courses : string[];
+  courses: string[];
   constructor(courseService: CourseService) {
     this.courses = courseService.getCourses();
   }

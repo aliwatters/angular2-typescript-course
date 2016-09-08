@@ -1,14 +1,21 @@
 import {Component} from 'angular2/core';
-import {ZippyComponent} from './zippy.component';
+import {TweetComponent} from './tweet.component';
+import {SummaryPipe} from './summary.pipe';
 
 @Component({
   selector: 'my-app',
   template: `
-  <zippy *ngFor="#tweet of tweets" [title]="tweet.title">
-    {{ tweet.body }}
-  </zippy>
+  <tweet *ngFor="#tweet of tweets"
+    [userId] = "tweet.userId"
+    [user] = "tweet.user"
+    [title] = "tweet.title"
+    [body] = "tweet.body | summary:140"
+    [iLike] = "tweet.iLike"
+    [count] = "tweet.count"
+  ></tweet>
   `,
-  directives: [ZippyComponent]
+  directives: [TweetComponent],
+  pipes: [SummaryPipe]
 })
 
 export class AppComponent {

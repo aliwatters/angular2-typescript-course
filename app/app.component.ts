@@ -12,7 +12,7 @@ import {SummaryPipe} from './summary.pipe';
     [body] = "tweet.body | summary:140"
     [iLike] = "tweet.iLike"
     [count] = "tweet.count"
-  >
+  ></tweet>
   `,
   directives: [TweetComponent],
   pipes: [SummaryPipe]

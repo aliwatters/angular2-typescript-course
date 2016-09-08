@@ -34,3 +34,19 @@ in templates;
 <ng-content select=".body"></ng-content>
 </more-stuff>
 ```
+
+Zen Coding:
+
+Auto expansion of repetitive code in html - via atom emmet package
+
+type:
+```
+   div.form-group>label+input.forum-control[type=text]
+```
+
+end of line hit tab -- and autocomplete to
+
+```
+  <div class="form-group"><label for=""></label><input type="text" class="forum-control"></div>
+```
+ctrl+shift+b beautify and done.

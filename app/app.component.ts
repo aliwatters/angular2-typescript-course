@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {TweetComponent} from './tweet.component';
+import {SummaryPipe} from './summary.pipe';
 
 @Component({
   selector: 'my-app',
@@ -8,12 +9,13 @@ import {TweetComponent} from './tweet.component';
     [userId] = "tweet.userId"
     [user] = "tweet.user"
     [title] = "tweet.title"
-    [body] = "tweet.body"
+    [body] = "tweet.body | summary:140"
     [iLike] = "tweet.iLike"
     [count] = "tweet.count"
   >
   `,
-  directives: [TweetComponent]
+  directives: [TweetComponent],
+  pipes: [SummaryPipe]
 })
 
 export class AppComponent {

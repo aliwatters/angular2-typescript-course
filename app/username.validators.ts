@@ -7,4 +7,13 @@ export class UsernameValidators {
     }
     return null;
   }
+
+  static shouldBeUnique(control: Control){
+    return new Promise((resolve, reject) => {
+      setTimeout(()=>{
+        if (control.value=='ali') resolve({ shouldBeUnique: true })
+        else resolve(null)
+      }, 1000);
+    })
+  }
 }

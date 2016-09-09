@@ -6,7 +6,7 @@ import {Component} from 'angular2/core';
 })
 
 export class ContactFormComponent {
-  log($item){
-    console.log($item)
+  onSubmit(form) {
+    console.log(form); // here - submit to API
   }
 }

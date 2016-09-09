@@ -1,0 +1,57 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      ngControl="name"
+      #name="ngForm"
+      id="name"
+      type="text"
+      class="form-control"
+      required
+      minlength=3>
+    <div *ngIf="name.touched && name.errors"  class="alert alert-danger">
+      <span *ngIf="name.errors.required">
+        Name is required
+      </span>
+      <span *ngIf="name.errors.minlength">
+        Name must be at least {{ name.errors.minlength.requiredLength }} characters
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      ngControl="email"
+      #email="ngForm"
+      id="email"
+      type="text"
+      class="form-control"
+      required
+      minlength=6>
+    <div *ngIf="email.touched && email.errors"  class="alert alert-danger">
+      <span *ngIf="email.errors.required">
+        Email is required
+      </span>
+      <span *ngIf="email.errors.minlength">
+        Email must be at least {{ email.errors.minlength.requiredLength }} characters
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="frequency">Frequency of emails</label>
+    <select
+      ngControl="frequency"
+      #frequency="ngForm"
+      id="frequency"
+      class="form-control"
+      required>
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+    </select>
+    <div *ngIf="frequency.touched && frequency.errors"  class="alert alert-danger">
+        Frequency is required
+    </div>
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>

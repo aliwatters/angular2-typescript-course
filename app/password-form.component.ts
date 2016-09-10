@@ -12,7 +12,7 @@ export class PasswordFormComponent {
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      password: ['', Validators.required, PasswordValidators.passwordCorrect],
+      password: ['', Validators.required],
       passwordNew: ['',
         Validators.compose([
           Validators.required,
@@ -33,7 +33,14 @@ export class PasswordFormComponent {
   }
 
   checkPassword() {
-    // var result = authService.update(this.form.value);
-    console.log(this.form.value);
+    // var result = authService.update(this.form.value);,
+    if (this.form.value.password !== 'password') {
+      this.form.find('password').setErrors({
+        passwordCorrect: true
+      });
+    } else {
+      console.log(this.form.value);
+      alert('password changed');
+    }
   }
 }

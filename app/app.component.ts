@@ -20,11 +20,13 @@ export class AppComponent implements OnInit {
       title:'hello',
       body: 'body'
     });
+
+    console.log(this._postService);
   }
 
   ngOnInit() {
     this._postService.getPosts()
-      .subscribe(posts => {
+      .then(posts => {
         this.isLoading = false;
         console.log(posts)
       })

@@ -1,6 +1,7 @@
 import {Http} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import {Injectable} from 'angular2/core';
 import {Post} from './post.ts';
 
@@ -8,12 +9,12 @@ import {Post} from './post.ts';
   private _url = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private _http: Http) {
-
   }
 
-  getPosts(): Observable<Post[]> {
+  getPosts(): Promise<Post[]> {
     return this._http.get(this._url)
       .map(res => res.json())
+      .toPromise()
   }
 
   createPost(post: Post) {

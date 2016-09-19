@@ -1,0 +1,16 @@
+<h1>Users</h1>
+<span *ngIf="isLoading">Loading...</span>
+<table class="table table-bordered" *ngIf="!isLoading">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="#user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td><i class="glyphicon glyphicon-edit"></i></td>
+    <td><i class="glyphicon glyphicon-remove"></i></td>
+  </tr>
+</table>

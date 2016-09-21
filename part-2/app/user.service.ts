@@ -15,8 +15,8 @@ import 'rxjs/add/operator/map';
       .map(res => res.json())
   }
 
-  createUser(post) {
-    return this._http.post(this._url, JSON.stringify(post))
+  createUser(user) {
+    return this._http.post(this._url, JSON.stringify(user))
       .map(res => res.json)
   }
 }

@@ -13,7 +13,7 @@ import {UserFormComponent} from './user-form.component';
   },
   { path: '/posts', name: 'Posts', component: PostsComponent },
   { path: '/users', name: 'Users', component: UsersComponent },
-  { path: '/users/new', name: 'Userform', component: UserFormComponent },
+  { path: '/users/new', name: 'UserForm', component: UserFormComponent },
   { path: '/*other', name: 'Other', redirectTo: ['Home'] }
 ])
 

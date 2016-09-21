@@ -5,6 +5,7 @@ import {HomeComponent} from './home.component';
 import {NavBarComponent} from './navbar.component';
 import {PostsComponent} from './posts.component';
 import {UsersComponent} from './users.component';
+import {UserFormComponent} from './user-form.component';
 
 @RouteConfig([
   {
@@ -12,6 +13,7 @@ import {UsersComponent} from './users.component';
   },
   { path: '/posts', name: 'Posts', component: PostsComponent },
   { path: '/users', name: 'Users', component: UsersComponent },
+  { path: '/users/new', name: 'Userform', component: UserFormComponent },
   { path: '/*other', name: 'Other', redirectTo: ['Home'] }
 ])
 

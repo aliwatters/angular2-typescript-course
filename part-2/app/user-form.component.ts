@@ -36,13 +36,20 @@ export class UserFormComponent implements CanDeactivate, OnInit {
   }
 
   save() {
-    console.log('Creating User:', this.form.value);
-    this._userService
-      .createUser(this.form.value)
-      .subscribe(res => {
-        // this.form.MarkAsPristine(); // TBA
-        this._router.navigate(['Users']);
-      });
+    var id = this._routeParams.get('id');
+    console.log('Saving User:', this.form.value, id);
+
+    var service;
+    if (id) {
+      service = this._userService.updateUser(this.form.value)
+    } else {
+      service = this._userService.createUser(this.form.value)
+    }
+
+    service.subscribe(res => {
+      // this.form.MarkAsPristine(); // TBA
+      this._router.navigate(['Users']);
+    });
   }
 
   routerCanDeactivate(next, previous) {

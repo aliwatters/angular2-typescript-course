@@ -25,6 +25,11 @@ import 'rxjs/add/operator/map';
       .map(res => res.json)
   }
 
+  deleteUser(id: number) {
+    return this._http.delete(this.getUserUrl(id))
+      .map(res => res.json)
+  }
+
   updateUser(user) {
     return this._http.put(this.getUserUrl(user.id), JSON.stringify(user))
       .map(res => res.json)

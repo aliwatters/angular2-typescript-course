@@ -49,7 +49,7 @@ export class PostsComponent {
     this._postService.getPosts(filter)
       .subscribe(res => {
         this.posts = res;
-        this.pagedPosts = this._getPostsInPage(1);
+        this.pagedPosts = _.take(this.posts, this.pageSize);
       },
       null,
       () => this.postsLoading = false
@@ -79,17 +79,8 @@ export class PostsComponent {
   }
 
   onPageChanged(page) {
-    this.pagedPosts = this._getPostsInPage(page);
+    var startIndex = (page-1) * this.pageSize;
+    this.pagedPosts = _.take(_.rest(this.posts, startIndex), this.pageSize);
   }
 
-  private _getPostsInPage(page) {
-    var startIndex = (page - 1) * this.pageSize;
-    var endIndex = Math.min(startIndex + this.pageSize, this.posts.length);
-
-    /*for (var i = startingIndex; i < endIndex; i++) {
-      result.push(this.posts[i]);
-    }*/
-
-    return this.posts.filter((el, idx) => idx >= startIndex && idx <= endIndex);
-  }
 }

@@ -1,6 +1,8 @@
-
 import { Component } from '@angular/core';
-import { MessagesService } from './messages.service'; 
+import { FormGroup } from '@angular/forms';
+
+import { MessagesService } from './messages.service';
+import { FormComponent } from '../prevent-unsaved-changes.service';
 
 @Component({
     selector: 'messages',
@@ -11,9 +13,10 @@ import { MessagesService } from './messages.service';
     </ul>
     `
 })
-export class MessagesComponent {
+export class MessagesComponent implements FormComponent {
     messages;
-    title = "New Message"
+    title = "New Message";
+    form: FormGroup;
 
     constructor(service : MessagesService) {
         this.messages = service.getMessages();

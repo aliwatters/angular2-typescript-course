@@ -11,13 +11,17 @@ import { PhotosModule } from './photos/photos.module';
 import { routing } from  './app.routing';
 import { photosRouting } from  './photos/photos.routing';
 
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes.service';
+
 @NgModule({
   imports: [
     BrowserModule,
     MessagesModule,
     PhotosModule,
 
-    // Routes - feature then app 
+    // Routes - feature then app
     photosRouting,
     routing
   ],
@@ -26,6 +30,10 @@ import { photosRouting } from  './photos/photos.routing';
     HomeComponent,
     NotFoundComponent
   ],
-  bootstrap:    [ AppComponent ]
+  providers: [
+    AuthService,
+    AuthGuard
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

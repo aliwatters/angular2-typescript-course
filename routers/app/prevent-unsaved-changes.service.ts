@@ -1,0 +1,17 @@
+import { CanDeactivate } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+
+import { MessagesComponent } from './messages/messages.component';
+
+export interface FormComponent {
+  hasUnsavedChanges(): Boolean;
+}
+
+export class PreventUnsavedChangesGuard implements CanDeactivate<FormComponent> {
+  canDeactive(component: FormComponent){
+    if (component.hasUnsavedChanges()) {
+      return confirm('Are you sure?');
+    }
+    return true;
+  };
+};
